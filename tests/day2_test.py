@@ -16,5 +16,3 @@ def test_star1():
 
 def test_star2():
     assert star2(iter(TEST_DATA)) == 900
-
-

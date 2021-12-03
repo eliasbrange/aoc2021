@@ -29,9 +29,9 @@ def star2(data):
     return count
 
 
-if __name__ == '__main__':
-    res1 = star1(read_file('../inputs/day1.txt', int))
+if __name__ == "__main__":
+    res1 = star1(read_file("../inputs/day1.txt", int))
     print(f"Star 1: {res1}")
 
-    res2 = star2(read_file('../inputs/day1.txt', int))
+    res2 = star2(read_file("../inputs/day1.txt", int))
     print(f"Star 2: {res2}")
