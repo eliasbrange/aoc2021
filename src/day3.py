@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import Iterator, List, Tuple
 from common import read_file
 
 
@@ -21,9 +21,10 @@ def star1(data: Iterator) -> int:
     return gamma * epsilon
 
 
-def _get_ratings(data: List[str], ox: bool, index: int = 0) -> int:
+def _get_ratings(data: List[str], index: int = 0) -> Tuple[int, int]:
     if len(data) == 1:
-        return int(data[0], 2)
+        res = int(data[0], 2)
+        return res, res
 
     ones = []
     zeroes = []
@@ -34,24 +35,19 @@ def _get_ratings(data: List[str], ox: bool, index: int = 0) -> int:
         else:
             zeroes.append(line)
 
-    if ox:
-        if len(ones) >= len(zeroes):
-            return _get_ratings(ones, ox=True, index=index + 1)
-        else:
-            return _get_ratings(zeroes, ox=True, index=index + 1)
+
+    if len(ones) >= len(zeroes):
+        most, _ = _get_ratings(ones, index + 1)
+        _, least = _get_ratings(zeroes, index + 1)
     else:
-        if len(ones) >= len(zeroes):
-            return _get_ratings(zeroes, ox=False, index=index + 1)
-        else:
-            return _get_ratings(ones, ox=False, index=index + 1)
+        most, _ = _get_ratings(zeroes, index + 1)
+        _, least = _get_ratings(ones, index + 1)
+
+    return most, least
 
 
 def star2(data):
-    data = list(data)
-
-    ox = _get_ratings(data, ox=True)
-    co = _get_ratings(data, ox=False)
-
+    ox, co = _get_ratings(list(data))
     return ox * co
 
 
