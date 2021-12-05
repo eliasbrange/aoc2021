@@ -35,7 +35,6 @@ def _get_ratings(data: List[str], index: int = 0) -> Tuple[int, int]:
         else:
             zeroes.append(line)
 
-
     if len(ones) >= len(zeroes):
         most, _ = _get_ratings(ones, index + 1)
         _, least = _get_ratings(zeroes, index + 1)
