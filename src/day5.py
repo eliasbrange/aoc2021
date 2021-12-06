@@ -1,13 +1,13 @@
 from typing import Iterator
 from common import read_file
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 
 
 Line = namedtuple("Line", field_names=["x1", "y1", "x2", "y2"])
 
 
 def star1(data: Iterator[Line]) -> int:
-    map = [[0] * 1000 for i in range(1000)]
+    map = defaultdict(int)
 
     for line in data:
         if line.x1 == line.x2:
@@ -22,14 +22,14 @@ def star1(data: Iterator[Line]) -> int:
             continue
 
         for i, x in enumerate(x_range):
-            map[x][y_range[i]] += 1
+            map[(x, y_range[i])] += 1
 
-    res = sum([sum(i > 1 for i in row) for row in map])
+    res = sum([1 for res in map.values() if res > 1])
     return res
 
 
 def star2(data: Iterator[Line]) -> int:
-    map = [[0] * 1000 for i in range(1000)]
+    map = defaultdict(int)
 
     for line in data:
         if line.x1 == line.x2:
@@ -45,9 +45,9 @@ def star2(data: Iterator[Line]) -> int:
             y_range = list(range(line.y1, line.y2 + y_sign, y_sign))
 
         for i, x in enumerate(x_range):
-            map[x][y_range[i]] += 1
+            map[(x, y_range[i])] += 1
 
-    res = sum([sum(i > 1 for i in row) for row in map])
+    res = sum([1 for res in map.values() if res > 1])
     return res
 
 
