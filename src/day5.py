@@ -1,13 +1,17 @@
-from typing import Iterator
+from typing import Iterator, NamedTuple, DefaultDict, Tuple
 from common import read_file
-from collections import namedtuple, defaultdict
+from collections import defaultdict
 
 
-Line = namedtuple("Line", field_names=["x1", "y1", "x2", "y2"])
+class Line(NamedTuple):
+    x1: int
+    y1: int
+    x2: int
+    y2: int
 
 
 def star1(data: Iterator[Line]) -> int:
-    map = defaultdict(int)
+    map: DefaultDict[Tuple[int, int], int] = defaultdict(int)
 
     for line in data:
         if line.x1 == line.x2:
@@ -29,7 +33,7 @@ def star1(data: Iterator[Line]) -> int:
 
 
 def star2(data: Iterator[Line]) -> int:
-    map = defaultdict(int)
+    map: DefaultDict[Tuple[int, int], int] = defaultdict(int)
 
     for line in data:
         if line.x1 == line.x2:

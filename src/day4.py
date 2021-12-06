@@ -41,7 +41,7 @@ def star1(boards: List[Board], numbers: List[int]) -> int:
 
 
 def star2(boards: List[Board], numbers: List[int]) -> int:
-    last_score = None
+    last_score = 0
 
     for n in numbers:
         for board in boards:
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     boards = []
 
     with open("../inputs/day4.txt") as f:
-        numbers = map(int, f.readline().split(","))
+        numbers = list(map(int, f.readline().split(",")))
         f.readline()
 
         board = Board()
