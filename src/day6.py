@@ -1,4 +1,3 @@
-from typing import Iterator
 from common import read_file
 
 
@@ -16,6 +15,7 @@ def get_fish_count(data: list[int], days: int) -> int:
         fishes[8] = new
 
     return sum(fishes)
+
 
 def star1(data: list[int]) -> int:
     return(get_fish_count(data, 80))
