@@ -1,9 +1,11 @@
 from typing import Iterator, NamedTuple
 from common import read_file
 
+
 class ClosingChar(NamedTuple):
     exp: str
     score: int
+
 
 CLOSING_CHARS = {
     ")": ClosingChar(exp="(", score=3),
@@ -11,6 +13,7 @@ CLOSING_CHARS = {
     "}": ClosingChar(exp="{", score=1197),
     ">": ClosingChar(exp="<", score=25137),
 }
+
 
 def star1(data: Iterator) -> int:
     score = 0
