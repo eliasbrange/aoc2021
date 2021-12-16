@@ -22,6 +22,9 @@ def star1(data: Iterator) -> int:
 
 
 def _get_ratings(data: List[str], index: int = 0) -> Tuple[int, int]:
+    if len(data) == 0:
+        return 0, 0
+
     if len(data) == 1:
         res = int(data[0], 2)
         return res, res
